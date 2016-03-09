@@ -1,0 +1,5 @@
+{
+    "require": {
+        "stefanius/slugifier": "^0.0.3"
+    }
+}

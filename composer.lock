@@ -1,0 +1,89 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "ff2daa7cfd9d21b7f027745ee31b385e",
+    "content-hash": "7415dbd7e4a833c2cefff2b50d7c8284",
+    "packages": [
+        {
+            "name": "stefanius/manipulation",
+            "version": "v0.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/stefanius/manipulation.git",
+                "reference": "6d429a495ef9ef993066cf83a17361a64ea37a2f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/stefanius/manipulation/zipball/6d429a495ef9ef993066cf83a17361a64ea37a2f",
+                "reference": "6d429a495ef9ef993066cf83a17361a64ea37a2f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Stefanius\\Manipulation\\": "src/Stefanius/Manipulation/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Stefanius",
+                    "email": "sgrootveld@gmail.com"
+                }
+            ],
+            "description": "Basic classes for manipulate values. You can build your own by inherit this package",
+            "time": "2016-03-07 22:32:37"
+        },
+        {
+            "name": "stefanius/slugifier",
+            "version": "v0.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/stefanius/slugifier.git",
+                "reference": "795187af191b90412b768b00d7c925d166842d29"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/stefanius/slugifier/zipball/795187af191b90412b768b00d7c925d166842d29",
+                "reference": "795187af191b90412b768b00d7c925d166842d29",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4",
+                "stefanius/manipulation": "^0.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Stefanius\\Slugifier\\": "src/Stefanius/Slugifier/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Stefanius",
+                    "email": "sgrootveld@gmail.com"
+                }
+            ],
+            "description": "Slugify your text!",
+            "time": "2016-03-09 19:37:48"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}
