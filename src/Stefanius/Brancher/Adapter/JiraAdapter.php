@@ -8,9 +8,14 @@ class JiraAdapter extends AbstractAdapter
 {
     protected $apiUrl = 'rest/api/latest/issue/';
 
-    public function find($issue)
+    /**
+     * @param string $issueCode
+     *
+     * @return Issue
+     */
+    public function find($issueCode)
     {
-        $concatinated = $this->config['host'] . $this->apiUrl . $issue;
+        $concatinated = $this->config['host'] . $this->apiUrl . $issueCode;
 
         $this->response = $this->guzzle
             ->get($concatinated)
@@ -29,25 +34,4 @@ class JiraAdapter extends AbstractAdapter
 
         return $issue;
     }
-
-    public function getIssueTitle()
-    {
-        // TODO: Implement getIssueTitle() method.
-    }
-
-    public function getIssueType()
-    {
-        // TODO: Implement getIssueType() method.
-    }
-
-    public function getIssueNumber()
-    {
-        // TODO: Implement getIssueNumber() method.
-    }
-
-    public function getAssignee()
-    {
-        // TODO: Implement getAssignee() method.
-    }
-
 }

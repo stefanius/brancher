@@ -2,13 +2,9 @@
 
 namespace Stefanius\Brancher\Command;
 
-use Guzzle\Http\Client;
-use Stefanius\Brancher\Adapter\JiraAdapter;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Yaml\Yaml;
 
 class BrancherCommand extends BaseCommand
 {
@@ -16,16 +12,19 @@ class BrancherCommand extends BaseCommand
     {
         $this
             ->setName('brancher:do')
+            ->addArgument(
+                'code',
+                InputArgument::REQUIRED,
+                'The issueNumber you want to fix'
+            )
         ;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $config = Yaml::parse(file_get_contents('/Users/sgrootveld/PhpstormProjects/brancher/.brancher'));
+        $adapter = $this->buildAdapter();
+        $issue = $adapter->find($input->getArgument('code'));
 
-        $client = new Client();
-
-        $jira = new JiraAdapter($client, $config['jira']);
-        $jira->find('TMV-404');
+        var_dump($issue);
     }
 }
