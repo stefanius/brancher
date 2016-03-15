@@ -27,7 +27,7 @@ class JiraAdapter extends AbstractAdapter
 
         $issue = new Issue();
         $issue->setId($data['id']);
-        $issue->setCode($data['id']);
+        $issue->setCode($data['key']);
         $issue->setAssignee($data['key']);
         $issue->setTitle($data['fields']['summary']);
         $issue->setDescription($data['fields']['description']);

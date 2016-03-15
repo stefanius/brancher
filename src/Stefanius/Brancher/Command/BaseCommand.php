@@ -5,6 +5,7 @@ namespace Stefanius\Brancher\Command;
 use Guzzle\Http\Client;
 use Stefanius\Brancher\Adapter\AdapterInterface;
 use Stefanius\Brancher\Factory\AdapterFactory;
+use Stefanius\Slugifier\Manipulators\SlugManipulator;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Yaml\Yaml;
 
@@ -32,5 +33,13 @@ abstract class BaseCommand extends Command
     protected function buildAdapter()
     {
         return AdapterFactory::Create($this->buildGuzzleClient(), $this->getConfig());
+    }
+
+    /**
+     * @return SlugManipulator
+     */
+    protected function getSlugifier()
+    {
+        return new SlugManipulator();
     }
 }
