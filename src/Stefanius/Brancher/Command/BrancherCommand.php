@@ -30,7 +30,5 @@ class BrancherCommand extends BaseCommand
 
         $process = new Process('git checkout -b ' . $slug);
         $process->run();
-
-        echo $process->getOutput();
     }
 }
