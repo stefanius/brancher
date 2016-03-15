@@ -12,7 +12,7 @@ class BrancherCommand extends BaseCommand
     protected function configure()
     {
         $this
-            ->setName('brancher:do')
+            ->setName('branch:create')
             ->addArgument(
                 'code',
                 InputArgument::REQUIRED,
