@@ -13,7 +13,7 @@ class JiraAdapter extends AbstractAdapter
      *
      * @return Issue
      */
-    public function find($issueCode)
+    public function prepare($issueCode)
     {
         $concatinated = $this->config['host'] . $this->apiUrl . $issueCode;
 
@@ -23,15 +23,31 @@ class JiraAdapter extends AbstractAdapter
             ->send()
         ;
 
-        $data = $this->response->json();
+        return $this->response->json();
+    }
 
-        $issue = new Issue();
-        $issue->setId($data['id']);
-        $issue->setCode($data['key']);
-        $issue->setAssignee($data['key']);
-        $issue->setTitle($data['fields']['summary']);
-        $issue->setDescription($data['fields']['description']);
+    protected function getIdAttribute(array $data)
+    {
+        return $data['id'];
+    }
 
-        return $issue;
+    protected function getCodeAttribute(array $data)
+    {
+        return $data['key'];
+    }
+
+    protected function getAssigneeAttribute(array $data)
+    {
+        return $data['key'];
+    }
+
+    protected function getTitleAttribute(array $data)
+    {
+        return $data['fields']['summary'];
+    }
+
+    protected function getDescriptionAttribute(array $data)
+    {
+        return $data['fields']['description'];
     }
 }

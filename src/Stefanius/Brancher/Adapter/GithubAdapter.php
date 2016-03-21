@@ -8,12 +8,14 @@ class GithubAdapter extends AbstractAdapter
 {
     protected $apiUrl = 'https://api.github.com/repos/';
 
+    protected $issueCode;
+
     /**
      * @param string $issueCode
      *
      * @return Issue
      */
-    public function find($issueCode)
+    public function prepare($issueCode)
     {
         $concatinated = $this->apiUrl . $this->config['owner'] . '/' . $this->config['repo'] . '/issues/' . $issueCode;
 
@@ -22,15 +24,33 @@ class GithubAdapter extends AbstractAdapter
             ->send()
         ;
 
-        $data = $this->response->json();
+        $this->issueCode = $issueCode;
 
-        $issue = new Issue();
-        $issue->setId($data['id']);
-        $issue->setCode($issueCode);
-        $issue->setAssignee($data['assignee']);
-        $issue->setTitle($data['title']);
-        $issue->setDescription($data['body']);
+        return $this->response->json();
+    }
 
-        return $issue;
+    protected function getIdAttribute(array $data)
+    {
+        return $data['id'];
+    }
+
+    protected function getCodeAttribute(array $data)
+    {
+        return $this->issueCode;
+    }
+
+    protected function getAssigneeAttribute(array $data)
+    {
+        return $data['assignee'];
+    }
+
+    protected function getTitleAttribute(array $data)
+    {
+        return $data['title'];
+    }
+
+    protected function getDescriptionAttribute(array $data)
+    {
+        return $data['body'];
     }
 }
