@@ -1,8 +1,14 @@
 #!/usr/bin/env php
 <?php
-// application.php
 
-require 'vendor/autoload.php';
+if (file_exists('./vendor/autoload.php')) {
+    require './vendor/autoload.php';
+} elseif (file_exists('../vendor/autoload.php')) {
+    require '../vendor/autoload.php';
+} else {
+    throw new Exception('./vendor/autoload.php not found.');
+}
+
 
 use Stefanius\Brancher\Command\TestCommand;
 use Symfony\Component\Console\Application;
