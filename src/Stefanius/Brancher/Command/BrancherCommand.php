@@ -9,6 +9,9 @@ use Symfony\Component\Process\Process;
 
 class BrancherCommand extends BaseCommand
 {
+    /**
+     *
+     */
     protected function configure()
     {
         $this
@@ -21,6 +24,9 @@ class BrancherCommand extends BaseCommand
         ;
     }
 
+    /**
+     * @inheritdoc
+     */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $adapter = $this->buildAdapter();
