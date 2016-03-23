@@ -11,10 +11,20 @@ if (file_exists('./vendor/autoload.php')) {
 
 use Symfony\Component\Console\Application;
 
+$parameters = new \Stefanius\Brancher\Parameters\Parameters();
+$parameters->setWorkingDir(getcwd());
+
+$commands =[
+    new \Stefanius\Brancher\Command\CreateCommand(),
+    new \Stefanius\Brancher\Command\ExistsCommand(),
+    new \Stefanius\Brancher\Command\CheckoutCommand(),
+];
+
 $application = new Application();
 
-$application->add(new \Stefanius\Brancher\Command\CreateCommand());
-$application->add(new \Stefanius\Brancher\Command\ExistsCommand());
-$application->add(new \Stefanius\Brancher\Command\CheckoutCommand());
+foreach ($commands as $command) {
+    $command->setParameters($parameters);
+    $application->add($command);
+}
 
 $application->run();
