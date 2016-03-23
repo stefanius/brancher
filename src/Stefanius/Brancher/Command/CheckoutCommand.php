@@ -46,6 +46,8 @@ class CheckoutCommand extends BaseCommand
                     "<info>Succesfully checked out '%s'.</info>", $this->getBranchSlug($issue)
                 )
             );
+
+            return;
         }
 
         if (!$this->isBranchExists($issue) && $input->getOption('create')) {
@@ -56,6 +58,18 @@ class CheckoutCommand extends BaseCommand
                     "<info>Succesfully created & checked out '%s'.</info>", $this->getBranchSlug($issue)
                 )
             );
+
+            return;
         }
+
+        $output->writeln(
+            sprintf(
+                "<info>
+                    Branch '%s' is not checked out. Maybe the branch didn't exists.
+                    You may want to use the '--create' switch.
+                </info>",
+                $this->getBranchSlug($issue)
+            )
+        );
     }
 }
