@@ -9,6 +9,8 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class CheckoutCommand extends BaseCommand
 {
+    const CREATE_OPTION = 'create';
+
     /**
      * @inheritdoc
      */
@@ -22,7 +24,7 @@ class CheckoutCommand extends BaseCommand
                 'The issueNumber you want to fix'
             )
             ->addOption(
-                'create',
+                self::CREATE_OPTION,
                 null,
                 InputOption::VALUE_NONE,
                 'If set, the branch will be created if not exists.'
@@ -38,7 +40,7 @@ class CheckoutCommand extends BaseCommand
         $adapter = $this->buildAdapter();
         $issue = $adapter->find($input->getArgument('code'));
 
-        if ($this->isBranchExists($issue) && !$input->getOption('create')) {
+        if ($this->isBranchExists($issue) && !$input->getOption(self::CREATE_OPTION)) {
             $this->runProcess($this->getCheckoutBranchProcess($issue));
 
             $output->writeln(
@@ -50,7 +52,7 @@ class CheckoutCommand extends BaseCommand
             return;
         }
 
-        if (!$this->isBranchExists($issue) && $input->getOption('create')) {
+        if (!$this->isBranchExists($issue) && $input->getOption(self::CREATE_OPTION)) {
             $this->runProcess($this->getCreateBranchProcess($issue));
 
             $output->writeln(
