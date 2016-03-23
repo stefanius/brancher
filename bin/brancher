@@ -14,4 +14,5 @@ use Symfony\Component\Console\Application;
 $application = new Application();
 $application->add(new \Stefanius\Brancher\Command\CreateCommand());
 $application->add(new \Stefanius\Brancher\Command\ExistsCommand());
+$application->add(new \Stefanius\Brancher\Command\CheckoutCommand());
 $application->run();

@@ -54,6 +54,7 @@ abstract class BaseCommand extends Command
     {
         return $this->getSlugifier()->manipulate($issue->getCode() . '-' . $issue->getTitle());
     }
+
     /**
      * @param Issue $issue
      *
@@ -64,6 +65,18 @@ abstract class BaseCommand extends Command
         $slug = $this->getBranchSlug($issue);
 
         return new Process('git checkout -b ' . $slug);
+    }
+
+    /**
+     * @param Issue $issue
+     *
+     * @return Process
+     */
+    protected function getCheckoutBranchProcess(Issue $issue)
+    {
+        $slug = $this->getBranchSlug($issue);
+
+        return new Process('git checkout ' . $slug);
     }
 
     /**
