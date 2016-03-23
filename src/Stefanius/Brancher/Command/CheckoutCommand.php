@@ -37,25 +37,23 @@ class CheckoutCommand extends BaseCommand
     {
         $adapter = $this->buildAdapter();
         $issue = $adapter->find($input->getArgument('code'));
-        $done = false;
 
-
-        if ($this->isBranchExists($issue)) {
+        if ($this->isBranchExists($issue) && !$input->getOption('create')) {
             $this->runProcess($this->getCheckoutBranchProcess($issue));
 
-            $done = true;
+            $output->writeln(
+                sprintf(
+                    "<info>Succesfully checked out '%s'.</info>", $this->getBranchSlug($issue)
+                )
+            );
         }
 
         if (!$this->isBranchExists($issue) && $input->getOption('create')) {
             $this->runProcess($this->getCreateBranchProcess($issue));
 
-            $done = true;
-        }
-
-        if ($done) {
             $output->writeln(
                 sprintf(
-                    "<info>Succesfully checked out '%s'.</info>", $this->getBranchSlug($issue)
+                    "<info>Succesfully created & checked out '%s'.</info>", $this->getBranchSlug($issue)
                 )
             );
         }
