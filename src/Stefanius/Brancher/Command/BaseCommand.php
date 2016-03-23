@@ -100,9 +100,8 @@ abstract class BaseCommand extends Command
     {
         $process->run();
 
-        var_dump($process->getExitCode());
-        if (strlen(trim($process->getErrorOutput())) > 0) {
-            //throw new \Exception($process->getErrorOutput());
+        if (strlen(trim($process->getErrorOutput())) > 0 && strpos($process->getErrorOutput(), 'fatal') !== false) {
+            throw new \Exception($process->getErrorOutput());
         }
     }
 }
