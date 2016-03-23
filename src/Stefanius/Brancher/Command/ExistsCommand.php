@@ -5,21 +5,20 @@ namespace Stefanius\Brancher\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Process\Process;
 
-class BrancherCommand extends BaseCommand
+class ExistsCommand extends BaseCommand
 {
     /**
-     *
+     * @inheritdoc
      */
     protected function configure()
     {
         $this
-            ->setName('branch:create')
+            ->setName('branch:exists')
             ->addArgument(
                 'code',
                 InputArgument::REQUIRED,
-                'The issueNumber you want to fix'
+                'The issueNumber you want to check for a featurebranch.'
             )
         ;
     }
@@ -33,16 +32,11 @@ class BrancherCommand extends BaseCommand
         $issue = $adapter->find($input->getArgument('code'));
 
         if ($this->isBranchExists($issue)) {
-            throw new \Exception(
-                sprintf(
-                    "Branch '%s' already exists. You can check it out or delete it before create a new one.",
-                    $this->getBranchSlug($issue)
-                )
-            );
+            $message = sprintf("<info>Branch '%s' exists on your system.</info>", $this->getBranchSlug($issue));
+        } else {
+            $message = sprintf("<info>Branch '%s' does not exists on your system.</info>", $this->getBranchSlug($issue));
         }
 
-        $this->runProcess($this->getCreateBranchProcess($issue));
-
-        $output->writeln(sprintf("<info>Branch '%s' successful created</info>", $this->getBranchSlug($issue)));
+        $output->writeln($message);
     }
 }
