@@ -42,5 +42,7 @@ class BrancherCommand extends BaseCommand
         }
 
         $this->runProcess($this->getCreateBranchProcess($issue));
+
+        $output->writeln(sprintf("<info>Branch '%s' successful created</info>", $this->getBranchSlug($issue)));
     }
 }
