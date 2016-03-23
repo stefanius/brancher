@@ -32,9 +32,15 @@ class BrancherCommand extends BaseCommand
         $adapter = $this->buildAdapter();
         $issue = $adapter->find($input->getArgument('code'));
 
-        $slug = $this->getSlugifier()->manipulate($issue->getCode() . '-' . $issue->getTitle());
+        if ($this->isBranchExists($issue)) {
+            throw new \Exception(
+                sprintf(
+                    "Branch '%s' already exists. You can check it out or delete it before create a new one.",
+                    $this->getBranchSlug($issue)
+                )
+            );
+        }
 
-        $process = new Process('git checkout -b ' . $slug);
-        $process->run();
+        $this->runProcess($this->getCreateBranchProcess($issue));
     }
 }
