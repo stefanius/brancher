@@ -1,6 +1,6 @@
 <?php
 
-namespace Stefanius\Brancher\Parameters;
+namespace Stefanius\Brancher\Misc;
 
 class Parameters
 {

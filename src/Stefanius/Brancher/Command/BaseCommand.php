@@ -6,7 +6,7 @@ use Guzzle\Http\Client;
 use Stefanius\Brancher\Adapter\AdapterInterface;
 use Stefanius\Brancher\Factory\AdapterFactory;
 use Stefanius\Brancher\Issue\Issue;
-use Stefanius\Brancher\Parameters\Parameters;
+use Stefanius\Brancher\Misc\Parameters;
 use Stefanius\Slugifier\Manipulators\SlugManipulator;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Process\Process;
