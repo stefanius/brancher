@@ -66,10 +66,10 @@ class CheckoutCommand extends BaseCommand
 
         $output->writeln(
             sprintf(
-                "<info>
-                    Branch '%s' is not checked out. Maybe the branch didn't exists.
-                    You may want to use the '--create' switch.
-                </info>",
+                "<info>" .
+                    "Branch '%s' is not checked out. Maybe the branch didn't exists." .
+                    "You may want to use the '--create' switch." .
+                "</info>",
                 $this->getBranchSlug($issue)
             )
         );
