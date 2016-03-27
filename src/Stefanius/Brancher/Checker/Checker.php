@@ -24,6 +24,12 @@ class Checker
         ];
     }
 
+    /**
+     * @param bool $breakEarly
+     * @return bool
+     * 
+     * @throws \Exception
+     */
     public function isOk($breakEarly = true)
     {
         foreach ($this->checkers as $checker) {
