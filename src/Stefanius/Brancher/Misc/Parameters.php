@@ -21,6 +21,4 @@ class Parameters
     {
         $this->workingDir = $workingDir;
     }
-
-
 }
