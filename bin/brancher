@@ -21,7 +21,7 @@ $commands = [
     new \Stefanius\Brancher\Command\CheckCommand(),
 ];
 
-$application = new Application();
+$application = new Application('Brancher', '@package_version@');
 
 foreach ($commands as $command) {
     $command->setParameters($parameters);
