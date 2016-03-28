@@ -17,7 +17,7 @@ class CheckoutCommand extends BaseCommand
     protected function configure()
     {
         $this
-            ->setName('branch:checkout')
+            ->setName('checkout')
             ->addArgument(
                 'code',
                 InputArgument::REQUIRED,

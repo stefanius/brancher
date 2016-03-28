@@ -14,7 +14,7 @@ class CheckCommand extends BaseCommand
     protected function configure()
     {
         $this
-            ->setName('check')
+            ->setName('lib:check')
         ;
     }
 

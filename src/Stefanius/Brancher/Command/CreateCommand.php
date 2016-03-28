@@ -14,7 +14,7 @@ class CreateCommand extends BaseCommand
     protected function configure()
     {
         $this
-            ->setName('branch:create')
+            ->setName('create')
             ->addArgument(
                 'code',
                 InputArgument::REQUIRED,

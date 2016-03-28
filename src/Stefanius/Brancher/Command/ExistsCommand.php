@@ -14,7 +14,7 @@ class ExistsCommand extends BaseCommand
     protected function configure()
     {
         $this
-            ->setName('branch:exists')
+            ->setName('exists')
             ->addArgument(
                 'code',
                 InputArgument::REQUIRED,
