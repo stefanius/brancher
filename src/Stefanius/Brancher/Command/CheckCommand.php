@@ -3,7 +3,6 @@
 namespace Stefanius\Brancher\Command;
 
 use Stefanius\Brancher\Checker\Checker;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
