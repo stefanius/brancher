@@ -19,6 +19,7 @@ $commands = [
     new \Stefanius\Brancher\Command\ExistsCommand(),
     new \Stefanius\Brancher\Command\CheckoutCommand(),
     new \Stefanius\Brancher\Command\CheckCommand(),
+    new \Stefanius\Brancher\Command\SetupCommand(),
 ];
 
 $application = new Application('Brancher', '@package_version@');
