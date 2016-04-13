@@ -1,0 +1,17 @@
+<?php
+
+if (command_exist('box')) {
+    echo exec('box build -v');
+} else {
+    echo "It seems that the 'box' command is not globally installed on your system. See 'https://github.com/box-project/box2' for more info" ;
+}
+
+/**
+ * @param $cmd
+ * @return bool
+ */
+function command_exist($cmd) {
+    $returnVal = shell_exec("which $cmd");
+
+    return (empty($returnVal) ? false : true);
+}
