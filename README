@@ -3,10 +3,17 @@ Doing things easy and quick. With that in mind I created Brancher, by setting up
 you can create feature branches per issue. How cool is that?
 
 # Latest release
+The latest release (compiled PHAR) is available as a download on http://stefanius.nl/products/brancher
 
 # Compile
+If you for some reason want to compile the package by yourself, you need to get a copy of https://github.com/box-project/box2.
+Once installed you can run ```php compile```. The result will be a single PHAR file.
 
+# Globally
+The software is at his best when it is installed globally on your system.
 
-# Setup
+# How to use
+Once you installed the package you can use it on all your repositories. To enable it you should run ```brancher lib:setup```.
+
 
 
