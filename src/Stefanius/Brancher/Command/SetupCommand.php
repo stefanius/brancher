@@ -49,7 +49,7 @@ class SetupCommand extends BaseCommand
 
         $yamlData = $dumper->dump($config, 4);
 
-        file_put_contents('test', $yamlData);
+        file_put_contents('.brancher', $yamlData);
     }
 
     /**
