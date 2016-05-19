@@ -40,7 +40,7 @@ abstract class BaseCommand extends Command
      */
     protected function getConfig()
     {
-        return Yaml::parse(file_get_contents('/Users/sgrootveld/PhpstormProjects/brancher/.brancher'));
+        return Yaml::parse(file_get_contents('.brancher'));
     }
 
     /**
